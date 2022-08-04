@@ -1,8 +1,9 @@
 'use strict';
 (() => {
     const bt_play = document.querySelector('.play');
-    const bt_exit = document.querySelector('.exit');
-
+    const res = document.querySelector('.result');
+    const gameList = document.querySelector('.game-list');
+    res.textContent = "tic-tac-toe";
     let user;
     let computer;
     let win;
@@ -10,40 +11,12 @@
     let computerDate = [];
     let maxSteps = 10;
     let haveWinner = false;
-    // let start = false;
-    bt_play.addEventListener('click', function() {
-        const selectCharacter = Math.floor(Math.random() * 2);
-
-        infoshow();
-        maxSteps = 9;
-        userDate = [];
-        computerDate = [];
-        win = '';
-        haveWinner = false;
-        const list = Array.from(document.querySelector('.game-list').children);
-        list.forEach(item => {
-            item.textContent = '';
-        });
-
-        const modal = document.querySelector('.modal-wrapp');
-        modal.classList.toggle('show');
-
-
-        if (selectCharacter === 0) {
-            user = 'X';
-            computer = 'O';
-        } else {
-            user = 'O';
-            computer = 'X';
-        }
-        infoshow();
-
-    });
-    bt_exit.addEventListener('click', function() {
-        console.log('exit');
-        window.location = 'http://www.google.com';
-    });
-
+    let arrayWin = [];
+    let play = false;
+    let music = document.querySelector(".music");
+    let fx = document.querySelector(".fx");
+    let resultFx = document.querySelector(".resultFx");
+    let stepFx = document.querySelector(".stepFx");
     let winCombinations = [
         [1, 2, 3],
         [1, 4, 7],
@@ -55,32 +28,69 @@
         [7, 8, 9]
     ];
 
-    const gameList = document.querySelector('.game-list');
+    let arraySoundsFx = [
+        "../sounds/FX/win.mp3",
+        "../sounds/FX/loose.mp3",
+        "../sounds/FX/draw.mp3"
+    ];
+    // Play button
+    bt_play.addEventListener('click', function() {
+        stepFx.play();
+        if (!play) startMusic();
+        play = true;
+        const selectCharacter = Math.floor(Math.random() * 2);
+        if (res.classList.contains('result-show')) {
+            res.classList.remove('result-show');
+            res.classList.toggle('result-hidden');
+        }
+        bt_play.classList.toggle("result-hidden");
+        res.textContent = 'Fight!';
+        maxSteps = 9;
+        userDate = [];
+        computerDate = [];
+        win = '';
+        haveWinner = false;
+        const list = Array.from(document.querySelector('.game-list').children);
+        list.forEach(item => {
+            item.textContent = '';
+            item.classList.remove("win");
+            item.classList.remove("loose");
+            item.classList.remove("userStep");
+            item.classList.remove("computerStep");
+            item.classList.remove("draw");
+        });
+        const modal = document.querySelector('.modal-wrapp');
+        modal.classList.toggle('show');
+        if (selectCharacter === 0) {
+            user = 'X';
+            computer = 'O';
+        } else {
+            user = 'O';
+            computer = 'X';
+        }
+    });
+
     gameList.addEventListener('click', eventFunction);
-
-
+    // User step
     function eventFunction(event) {
         const target = event.target;
         if (event.target.nodeName !== 'LI') return;
-
         if (!target.innerText) {
+            stepFx.play();
             maxSteps -= 1;
-            console.log('user spet', maxSteps);
             target.innerText = user;
             const number = Number(target.getAttribute('data-ceil'));
             userDate.push(number);
-
+            target.className += " userStep";
             if (maxSteps > 0) {
-
-                computerStep();
-            } else {
-                console.log('шагов больше нет');
                 checkWinner();
-
+                if (!haveWinner) computerStep();
+            } else {
+                checkWinner();
             }
         }
     }
-
+    // Computer step
     function computerStep() {
         setTimeout(function() {
             if (maxSteps > 0) {
@@ -90,58 +100,43 @@
                 list.forEach(element => {
                     if (!element.innerText) {
                         emptyStep.push(element);
-
                     }
                 });
-
                 const empty = Math.floor(Math.random() * emptyStep.length);
                 const emptyShoos = emptyStep[empty];
-
                 const number = Number(emptyShoos.getAttribute('data-ceil'));
                 computerDate.push(number);
-
+                emptyShoos.className += " computerStep";
                 if (emptyShoos) {
                     emptyShoos.innerText = computer;
                 }
-
-                // if (maxSteps <= 0) {
-                //     console.log('game over');
-                // }
                 checkWinner();
             } else {
-                console.log('у компьютера больше нет шагов');
                 checkWinner();
-
             }
         }, 100);
     }
-
+    // Check winner
     function checkWinner() {
         let countX = 0;
         let countO = 0;
-        // let haveWinner = false;
-        console.log('проверка победителя');
         if (userDate.length > 2 || computerDate.length > 2) {
-            console.log('есть данные для проверки минимум 3');
-            console.log(userDate, computerDate);
             for (let index = 0; index < winCombinations.length; index++) {
-
-                const arrayWin = winCombinations[index];
+                arrayWin = winCombinations[index];
                 countX = 0;
                 countO = 0;
-
                 for (const iterator of arrayWin) {
-                    console.log('мы в цикле проверки');
                     if (userDate.includes(iterator)) {
                         countX += 1;
                         if (countX >= 3) {
-
                             haveWinner = true;
                             computerDate = [];
-                            console.log(`Win User ${user}`);
-                            win = 'user win';
+                            win = 'You Win!';
                             showModalWindow();
-
+                            showResult();
+                            resultColor();
+                            resultFx.src = arraySoundsFx[0];
+                            resultFx.play();
                         }
                     }
                     if (computerDate.includes(iterator)) {
@@ -149,71 +144,84 @@
                         if (countO >= 3) {
                             haveWinner = true;
                             userDate = [];
-                            console.log(`Win Computer ${computer}`);
-                            win = 'computer win';
+                            resultFx.src = arraySoundsFx[1];
+                            resultFx.play();
+                            win = 'Computer Win!';
                             showModalWindow();
-
-
+                            showResult();
+                            resultColor();
                         }
                     }
                 }
             }
-
-        } else {
-            console.log('недостаточно данных для проверки');
-
         }
-        // проверка на ничью
+
+        // Check draw
         if (!haveWinner) {
             let empty = 0;
             const allCells = Array.from(document.querySelector('.game-list').children);
             allCells.forEach(element => {
                 if (element.innerText) {
                     empty += 1;
-
                 }
             });
             if (empty === 9) {
                 if (countO < 3 && countX < 3) {
-                    console.log('ничья');
-                    win = 'ничья';
+                    resultFx.src = arraySoundsFx[2];
+                    resultFx.play();
+                    win = 'Draw!';
                     showModalWindow();
-
+                    showResult();
+                    drawColor();
                 }
-            } else {
-                console.log('есть свободные клетки');
-                console.log(countO, countX);
             }
-        } else {
-            console.log('у нас есть победитель');
-            // showModalWindow();
         }
     }
-
+    // Protection
     function showModalWindow() {
-        console.log('modal window');
         const modal = document.querySelector('.modal-wrapp');
-        const res = document.querySelector('.result');
         res.textContent = win;
-        console.log(res);
         modal.classList.toggle('show');
-        //addition check
+        //Addition check
         if (haveWinner && modal.classList.contains('show')) {
             modal.classList.remove('show');
         }
-
-
     }
-
-    function infoshow() {
-        const tr = '  ';
-        let info = document.querySelector('.info');
-        info.textContent = `user = ${user} computer = ${computer}`;
+    // Result title and button
+    function showResult() {
+        if (res.classList.contains('result-hidden')) {
+            res.classList.remove('result-hidden');
+        }
+        if (bt_play.classList.contains('result-hidden')) {
+            bt_play.classList.remove('result-hidden');
+        }
+    };
+    // Win and loose color cells
+    function resultColor() {
+        const list2 = Array.from(document.querySelector('.game-list').children);
+        for (let index = 0; index < arrayWin.length; index++) {
+            let element = arrayWin[index];
+            list2.forEach(item => {
+                if (item.getAttribute("data-ceil") == element) {
+                    if (win == 'Computer Win!') {
+                        item.className += " loose";
+                    } else if (win == 'You Win!') {
+                        item.className += " win";
+                    }
+                }
+            });
+        }
     }
-    //перемещение по кнопкам
-    addEventListener("keydown", function(event) {
-        console.log(event.keyCode);
-    });
-
-
+    // Draw color cells
+    function drawColor() {
+        const list2 = Array.from(document.querySelector('.game-list').children);
+        list2.forEach(item => {
+            item.className += ' draw';
+        });
+    }
+    // Music track
+    function startMusic() {
+        music.loop = true;
+        music.play();
+    }
 })();
