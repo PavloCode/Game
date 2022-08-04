@@ -14,8 +14,10 @@
     let arrayWin = [];
     let play = false;
     let music = document.querySelector(".music");
+    let fx = document.querySelector(".fx");
     let resultFx = document.querySelector(".resultFx");
     let stepFx = document.querySelector(".stepFx");
+    let firstPlay = false;
     let winCombinations = [
         [1, 2, 3],
         [1, 4, 7],
@@ -34,12 +36,10 @@
     ];
     // Play button
     bt_play.addEventListener('click', function() {
-        stepFx.play();
-        resultFx.src = arraySoundsFx[0];
-        resultFx.volume = 0.0;
-        resultFx.play();
+        // stepFx.play();
         if (!play) startMusic();
-        play = true;
+
+
         const selectCharacter = Math.floor(Math.random() * 2);
         if (res.classList.contains('result-show')) {
             res.classList.remove('result-show');
@@ -137,9 +137,9 @@
                             showModalWindow();
                             showResult();
                             resultColor();
-                            resultFx.src = arraySoundsFx[0];
-                            resultFx.volume = 1;
-                            resultFx.play();
+                            // resultFx.src = arraySoundsFx[0];
+                            // resultFx.play();
+                            PlayTest();
                         }
                     }
                     if (computerDate.includes(iterator)) {
@@ -227,4 +227,21 @@
         music.loop = true;
         music.play();
     }
+
+    function PlayTest() {
+        if (!firstPlay) {
+            document.getElementById('fxTest').volume = 0;
+            let endPlay_button = document.getElementById('btnTest');
+            endPlay_button.click();
+            firstPlay = true;
+        } else {
+            document.getElementById('fxTest').volume = 1;
+            let endPlay_button = document.getElementById('btnTest');
+            endPlay_button.click();
+        }
+
+
+
+    };
+
 })();
