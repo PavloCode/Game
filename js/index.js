@@ -13,10 +13,10 @@
     let haveWinner = false;
     let arrayWin = [];
     let play = false;
-    let music = document.querySelector(".music");
-    let fx = document.querySelector(".fx");
-    let resultFx = document.querySelector(".resultFx");
-    let stepFx = document.querySelector(".stepFx");
+    let music = new Audio('../sounds/Music/MainTrack.mp3');
+    let resultFx = new Audio();
+    // let stepFx = new Audio('../sounds/FX/step.mp3');
+    let stepFx = new Audio();
     let winCombinations = [
         [1, 2, 3],
         [1, 4, 7],
@@ -35,6 +35,7 @@
     ];
     // Play button
     bt_play.addEventListener('click', function() {
+        stepFx.src = '../sounds/FX/step.mp3';
         stepFx.play();
         if (!play) startMusic();
         play = true;
@@ -74,8 +75,10 @@
     // User step
     function eventFunction(event) {
         const target = event.target;
+
         if (event.target.nodeName !== 'LI') return;
         if (!target.innerText) {
+            stepFx.src = '../sounds/FX/step.mp3';
             stepFx.play();
             maxSteps -= 1;
             target.innerText = user;
@@ -135,7 +138,8 @@
                             showModalWindow();
                             showResult();
                             resultColor();
-                            resultFx.src = arraySoundsFx[0];
+                            // resultFx.src = arraySoundsFx[0];
+                            resultFx.src = '../sounds/FX/win.mp3';
                             resultFx.play();
                         }
                     }
@@ -144,7 +148,8 @@
                         if (countO >= 3) {
                             haveWinner = true;
                             userDate = [];
-                            resultFx.src = arraySoundsFx[1];
+                            // resultFx.src = arraySoundsFx[1];
+                            resultFx.src = '../sounds/FX/loose.mp3';
                             resultFx.play();
                             win = 'Computer Win!';
                             showModalWindow();
