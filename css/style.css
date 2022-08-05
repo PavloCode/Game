@@ -78,18 +78,10 @@ body {
 
 .win {
     background: rgb(20, 200, 92);
-    /* animation-name: blink;
+    animation-name: blink;
     animation-timing-function: linear;
     animation-duration: 0.3s;
-    animation-iteration-count: infinite; */
-    animation-name: blinker;
     animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
-    animation-duration: 2s;
-    -webkit-animation-name: blinker;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
-    -webkit-animation-duration: 0.3s;
 }
 
 .loose {
@@ -248,35 +240,9 @@ body {
     }
 }
 
-
-/* asd */
-
-.blink {
-    animation-name: blinker;
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
-    animation-duration: 2s;
-    -webkit-animation-name: blinker;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
-    -webkit-animation-duration: 2s;
-}
-
-@keyframes blinker {
-    from {
-        opacity: 1.0;
-    }
-    to {
-        opacity: 0.0;
-    }
-}
-
-@-webkit-keyframes blinker {
-    from {
-        opacity: 1.0;
-    }
-    to {
-        opacity: 0.0;
+@-webkit-keyframes blink {
+    50% {
+        opacity: 0;
     }
 }
 
