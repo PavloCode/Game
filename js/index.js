@@ -14,10 +14,6 @@
     let arrayWin = [];
     let play = false;
     let music = document.querySelector(".music");
-    let fx = document.querySelector(".fx");
-    let resultFx = document.querySelector(".resultFx");
-    let stepFx = document.querySelector(".stepFx");
-    let firstPlay = false;
     let winCombinations = [
         [1, 2, 3],
         [1, 4, 7],
@@ -29,21 +25,11 @@
         [7, 8, 9]
     ];
 
-    let arraySoundsFx = [
-        "../sounds/FX/win.mp3",
-        "../sounds/FX/loose.mp3",
-        "../sounds/FX/draw.mp3"
-    ];
     // Play button
     bt_play.addEventListener('click', function() {
         // stepFx.play();
         if (!play) startMusic();
         play = true;
-        if (!firstPlay) {
-            ActiveSounds();
-        }
-        playStep();
-
         const selectCharacter = Math.floor(Math.random() * 2);
         if (res.classList.contains('result-show')) {
             res.classList.remove('result-show');
@@ -82,9 +68,6 @@
         const target = event.target;
         if (event.target.nodeName !== 'LI') return;
         if (!target.innerText) {
-            // stepFx.play();
-            playStep();
-
             maxSteps -= 1;
             target.innerText = user;
             const number = Number(target.getAttribute('data-ceil'));
@@ -143,10 +126,6 @@
                             showModalWindow();
                             showResult();
                             resultColor();
-                            // resultFx.src = arraySoundsFx[0];
-                            // resultFx.play();
-                            // PlayTest();
-                            playWin();
                         }
                     }
                     if (computerDate.includes(iterator)) {
@@ -154,13 +133,10 @@
                         if (countO >= 3) {
                             haveWinner = true;
                             userDate = [];
-                            resultFx.src = arraySoundsFx[1];
-                            // resultFx.play();
                             win = 'Computer Win!';
                             showModalWindow();
                             showResult();
                             resultColor();
-
                         }
                     }
                 }
@@ -178,8 +154,6 @@
             });
             if (empty === 9) {
                 if (countO < 3 && countX < 3) {
-                    resultFx.src = arraySoundsFx[2];
-                    resultFx.play();
                     win = 'Draw!';
                     showModalWindow();
                     showResult();
@@ -235,44 +209,4 @@
         music.loop = true;
         music.play();
     }
-
-    function ActiveSounds() {
-        if (!firstPlay) {
-            document.getElementById('win').volume = 0;
-            document.getElementById('loose').volume = 0;
-            document.getElementById('draw').volume = 0;
-            document.getElementById('step').volume = 0;
-            // snd.src = arraySoundsFx[0];
-            let btnWin = document.getElementById('btnWin');
-            let btnLoose = document.getElementById('btnLoose');
-            let btnDraw = document.getElementById('btnDraw');
-            let btnStep = document.getElementById('btnStep');
-            btnWin.click();
-            btnLoose.click();
-            btnDraw.click();
-            btnStep.click();
-
-
-            firstPlay = true;
-        }
-        // } else {
-        //     let snd = document.getElementById('fxTest').volume = 1;
-
-        //     let endPlay_button = document.getElementById('btnTest');
-        //     endPlay_button.click();
-        // }
-    };
-
-    function playStep() {
-        let a = document.getElementById('step').volume = 1;
-        let btnStep = document.getElementById('btnStep');
-        btnStep.click();
-    }
-
-    function playWin() {
-        document.getElementById('win').volume = 1;
-        let btnWin = document.getElementById('btnWin');
-        btnWin.click();
-    }
-
 })();

@@ -14,39 +14,38 @@
 </head>
 
 <body>
-    <div class="main-wrapp">
-        <span class="result"></span>
-        <div class="wrapp">
-            <ul class="game-list list">
-                <li class="game-item" data-ceil="1"></li>
-                <li class="game-item" data-ceil="2"></li>
-                <li class="game-item" data-ceil="3"></li>
-                <li class="game-item" data-ceil="4"></li>
-                <li class="game-item" data-ceil="5"></li>
-                <li class="game-item" data-ceil="6"></li>
-                <li class="game-item" data-ceil="7"></li>
-                <li class="game-item" data-ceil="8"></li>
-                <li class="game-item" data-ceil="9"></li>
-            </ul>
-            <div class="modal-wrapp"></div>
+    <section class="mainSection">
+        <div class="flyCars">
+            <div class="waveWrapperInner">
+                <div class="traffic1" style="background-image: url('./img/2.png')"></div>
+            </div>
+            <div class="waveWrapperInner">
+                <div class="traffic2" style="background-image: url('./img/1.png')"></div>
+            </div>
+            <div class="waveWrapperInner">
+                <div class="traffic3" style="background-image: url('./img/1.png')"></div>
+            </div>
         </div>
-        <button class="play">Play</button>
-    </div>
-    <audio class="music" src="./sounds/Music/MainTrack.mp3"></audio>
-    <audio class="resultFx" src=""></audio>
-    <audio class="stepFx" src="./sounds/FX/step.mp3"></audio>
-
-    <audio id="win" src="./sounds/FX/win.mp3"></audio>
-    <button id="btnWin" onclick="document.getElementById('win').play()">asdasd</button>
-
-    <audio id="loose" src="./sounds/FX/loose.mp3"></audio>
-    <button id="btnLoose" onclick="document.getElementById('loose').play()">asdasd</button>
-
-    <audio id="draw" src="./sounds/FX/draw.mp3"></audio>
-    <button id="btnDraw" onclick="document.getElementById('draw').play()">asdasd</button>
-
-    <audio id="step" src="./sounds/FX/step.mp3"></audio>
-    <button id="btnStep" onclick="document.getElementById('step').play()">asdasd</button>
+        <div class="main-wrapp">
+            <span class="result"></span>
+            <div class="wrapp">
+                <ul class="game-list list">
+                    <li class="game-item" data-ceil="1"></li>
+                    <li class="game-item" data-ceil="2"></li>
+                    <li class="game-item" data-ceil="3"></li>
+                    <li class="game-item" data-ceil="4"></li>
+                    <li class="game-item" data-ceil="5"></li>
+                    <li class="game-item" data-ceil="6"></li>
+                    <li class="game-item" data-ceil="7"></li>
+                    <li class="game-item" data-ceil="8"></li>
+                    <li class="game-item" data-ceil="9"></li>
+                </ul>
+                <div class="modal-wrapp"></div>
+            </div>
+            <button class="play">Play</button>
+        </div>
+    </section>
+    <audio class="music" src="./sounds/MainTrack.mp3"></audio>
     <script src="./js/index.js"></script>
 </body>
 

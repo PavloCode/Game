@@ -21,10 +21,6 @@ body {
     font-size: 24px;
     line-height: 26px;
     color: rgb(255, 255, 255);
-    background-image: url('../img/BG.png');
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
 }
 
 .container {
@@ -42,6 +38,14 @@ body {
 
 
 /* game-start */
+
+.mainSection {
+    background-image: url('../img/BG.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
 
 .main-wrapp {
     text-align: center;
@@ -74,14 +78,26 @@ body {
 
 .win {
     background: rgb(20, 200, 92);
+    animation-name: blink;
+    animation-timing-function: linear;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
 }
 
 .loose {
     background: rgb(236, 28, 94);
+    animation-name: blink;
+    animation-timing-function: linear;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
 }
 
 .draw {
     background: rgb(227, 210, 15);
+    animation-name: blink;
+    animation-timing-function: linear;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
 }
 
 .userStep {
@@ -116,7 +132,7 @@ body {
 
 .play {
     padding: 0;
-    margin: 0;
+    margin-top: 6px;
     border: none;
     color: rgb(255, 255, 255);
     background: none;
@@ -150,6 +166,79 @@ body {
 
 
 /* game-end */
+
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+@keyframes move_wave2 {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+@keyframes move_wave3 {
+    0% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        transform: translateX(0%) translateZ(0) scaleY(1)
+    }
+}
+
+.waveWrapperInner {
+    position: absolute;
+    overflow: hidden;
+    top: 40%;
+    width: 100%;
+    height: 100px;
+}
+
+.traffic1 {
+    width: 200%;
+    height: 100%;
+    background-size: 10% 100px;
+    animation: move_wave 10s linear infinite;
+}
+
+.traffic2 {
+    width: 200%;
+    height: 100%;
+    background-size: 10% 100px;
+    opacity: 0.4;
+    animation: move_wave2 7s linear infinite;
+}
+
+.traffic3 {
+    width: 200%;
+    height: 100%;
+    background-size: 10% 100px;
+    opacity: 0.6;
+    animation: move_wave3 15s linear infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 
 
 /* adaptive-start */
