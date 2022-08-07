@@ -14,37 +14,44 @@
 </head>
 
 <body>
+    <!-- main screen start -->
     <section class="mainSection">
+        <!-- animation fly cars -->
         <div class="flyCars">
-            <div class="waveWrapperInner">
+            <div class="waveWrapper">
                 <div class="traffic1" style="background-image: url('./img/2.png')"></div>
             </div>
-            <div class="waveWrapperInner">
+            <div class="waveWrapper">
                 <div class="traffic2" style="background-image: url('./img/1.png')"></div>
             </div>
-            <div class="waveWrapperInner">
+            <div class="waveWrapper">
                 <div class="traffic3" style="background-image: url('./img/1.png')"></div>
             </div>
         </div>
-        <div class="main-wrapp">
+        <div class="mainWrapp">
+            <!-- result -->
             <span class="result"></span>
             <div class="wrapp">
-                <ul class="game-list list">
-                    <li class="game-item" data-ceil="1"></li>
-                    <li class="game-item" data-ceil="2"></li>
-                    <li class="game-item" data-ceil="3"></li>
-                    <li class="game-item" data-ceil="4"></li>
-                    <li class="game-item" data-ceil="5"></li>
-                    <li class="game-item" data-ceil="6"></li>
-                    <li class="game-item" data-ceil="7"></li>
-                    <li class="game-item" data-ceil="8"></li>
-                    <li class="game-item" data-ceil="9"></li>
+                <!-- user interface -->
+                <ul class="gameList list">
+                    <li class="gameItem" data-ceil="1"></li>
+                    <li class="gameItem" data-ceil="2"></li>
+                    <li class="gameItem" data-ceil="3"></li>
+                    <li class="gameItem" data-ceil="4"></li>
+                    <li class="gameItem" data-ceil="5"></li>
+                    <li class="gameItem" data-ceil="6"></li>
+                    <li class="gameItem" data-ceil="7"></li>
+                    <li class="gameItem" data-ceil="8"></li>
+                    <li class="gameItem" data-ceil="9"></li>
                 </ul>
-                <div class="modal-wrapp"></div>
+                <div class="modalWrapp"></div>
             </div>
+            <!-- play button -->
             <button class="play">Play</button>
         </div>
     </section>
+    <!-- main screen end -->
+    <!-- main music track -->
     <audio class="music" src="./sounds/MainTrack.mp3"></audio>
     <script src="./js/index.js"></script>
 </body>

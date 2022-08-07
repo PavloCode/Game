@@ -2,7 +2,7 @@
 (() => {
     const bt_play = document.querySelector('.play');
     const res = document.querySelector('.result');
-    const gameList = document.querySelector('.game-list');
+    const listCell = document.querySelector('.gameList');
     res.textContent = "tic-tac-toe";
     let user;
     let computer;
@@ -24,25 +24,19 @@
         [4, 5, 6],
         [7, 8, 9]
     ];
-
     // Play button
     bt_play.addEventListener('click', function() {
-        // stepFx.play();
         if (!play) startMusic();
         play = true;
         const selectCharacter = Math.floor(Math.random() * 2);
-        if (res.classList.contains('result-show')) {
-            res.classList.remove('result-show');
-            res.classList.toggle('result-hidden');
-        }
-        bt_play.classList.toggle("result-hidden");
+        bt_play.classList.toggle("resultHidden");
         res.textContent = 'Fight!';
         maxSteps = 9;
         userDate = [];
         computerDate = [];
         win = '';
         haveWinner = false;
-        const list = Array.from(document.querySelector('.game-list').children);
+        const list = Array.from(document.querySelector('.gameList').children);
         list.forEach(item => {
             item.textContent = '';
             item.classList.remove("win");
@@ -51,7 +45,7 @@
             item.classList.remove("computerStep");
             item.classList.remove("draw");
         });
-        const modal = document.querySelector('.modal-wrapp');
+        const modal = document.querySelector('.modalWrapp');
         modal.classList.toggle('show');
         if (selectCharacter === 0) {
             user = 'X';
@@ -61,8 +55,7 @@
             computer = 'X';
         }
     });
-
-    gameList.addEventListener('click', eventFunction);
+    listCell.addEventListener('click', eventFunction);
     // User step
     function eventFunction(event) {
         const target = event.target;
@@ -86,7 +79,7 @@
         setTimeout(function() {
             if (maxSteps > 0) {
                 maxSteps -= 1;
-                const list = Array.from(document.querySelector('.game-list').children);
+                const list = Array.from(document.querySelector('.gameList').children);
                 let emptyStep = [];
                 list.forEach(element => {
                     if (!element.innerText) {
@@ -107,7 +100,7 @@
             }
         }, 100);
     }
-    // Check winner
+    // Check the winner
     function checkWinner() {
         let countX = 0;
         let countO = 0;
@@ -124,7 +117,7 @@
                             computerDate = [];
                             win = 'You Win!';
                             showModalWindow();
-                            showResult();
+                            showButton();
                             resultColor();
                         }
                     }
@@ -135,19 +128,18 @@
                             userDate = [];
                             win = 'Computer Win!';
                             showModalWindow();
-                            showResult();
+                            showButton();
                             resultColor();
                         }
                     }
                 }
             }
         }
-
         // Check draw
         if (!haveWinner) {
             let empty = 0;
-            const allCells = Array.from(document.querySelector('.game-list').children);
-            allCells.forEach(element => {
+            const list = Array.from(document.querySelector('.gameList').children);
+            list.forEach(element => {
                 if (element.innerText) {
                     empty += 1;
                 }
@@ -156,7 +148,7 @@
                 if (countO < 3 && countX < 3) {
                     win = 'Draw!';
                     showModalWindow();
-                    showResult();
+                    showButton();
                     drawColor();
                 }
             }
@@ -164,7 +156,7 @@
     }
     // Protection
     function showModalWindow() {
-        const modal = document.querySelector('.modal-wrapp');
+        const modal = document.querySelector('.modalWrapp');
         res.textContent = win;
         modal.classList.toggle('show');
         //Addition check
@@ -172,21 +164,18 @@
             modal.classList.remove('show');
         }
     }
-    // Result title and button
-    function showResult() {
-        if (res.classList.contains('result-hidden')) {
-            res.classList.remove('result-hidden');
-        }
-        if (bt_play.classList.contains('result-hidden')) {
-            bt_play.classList.remove('result-hidden');
+    // Hidden button
+    function showButton() {
+        if (bt_play.classList.contains('resultHidden')) {
+            bt_play.classList.remove('resultHidden');
         }
     };
     // Win and loose color cells
     function resultColor() {
-        const list2 = Array.from(document.querySelector('.game-list').children);
+        const list = Array.from(document.querySelector('.gameList').children);
         for (let index = 0; index < arrayWin.length; index++) {
             let element = arrayWin[index];
-            list2.forEach(item => {
+            list.forEach(item => {
                 if (item.getAttribute("data-ceil") == element) {
                     if (win == 'Computer Win!') {
                         item.className += " loose";
@@ -199,8 +188,8 @@
     }
     // Draw color cells
     function drawColor() {
-        const list2 = Array.from(document.querySelector('.game-list').children);
-        list2.forEach(item => {
+        const list = Array.from(document.querySelector('.gameList').children);
+        list.forEach(item => {
             item.className += ' draw';
         });
     }

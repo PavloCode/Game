@@ -1,4 +1,4 @@
-/* basic-start */
+/* basic start */
 
 html {
     box-sizing: border-box;
@@ -20,11 +20,7 @@ body {
     font-family: 'Bungee', cursive;
     font-size: 24px;
     line-height: 26px;
-    color: rgb(255, 255, 255);
-}
-
-.container {
-    margin: 0 auto;
+    color: #ffffff;
 }
 
 .list {
@@ -37,7 +33,7 @@ body {
 /* basic end */
 
 
-/* game-start */
+/* style start */
 
 .mainSection {
     background-image: url('../img/Mobile.jpg');
@@ -47,7 +43,7 @@ body {
     height: 100vh;
 }
 
-.main-wrapp {
+.mainWrapp {
     text-align: center;
     position: absolute;
     left: 50%;
@@ -55,20 +51,20 @@ body {
     transform: translateX(-50%);
 }
 
-.game-list {
+.gameList {
     display: flex;
     flex-wrap: wrap;
     width: 330px;
     margin: 0 auto;
-    background: rgba(0, 0, 0, 0.813);
+    background: #000000cf;
     position: relative;
 }
 
-.game-item {
+.gameItem {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    outline: 2px solid rgba(18, 128, 245, 0.376);
+    outline: 2px solid #1481f560;
     font-size: 40px;
     display: flex;
     align-items: center;
@@ -77,52 +73,40 @@ body {
 }
 
 .win {
-    background: rgb(20, 200, 92);
-    animation-name: blink;
-    animation-timing-function: linear;
-    animation-duration: 0.3s;
-    animation-iteration-count: infinite;
+    background: #14c85c;
 }
 
 .loose {
-    background: rgb(236, 28, 94);
-    animation-name: blink;
-    animation-timing-function: linear;
-    animation-duration: 0.3s;
-    animation-iteration-count: infinite;
+    background: #ec1c5e;
 }
 
 .draw {
-    background: rgb(227, 210, 15);
-    animation-name: blink;
-    animation-timing-function: linear;
-    animation-duration: 0.3s;
-    animation-iteration-count: infinite;
+    background: #e3d20f;
 }
 
 .userStep {
-    color: rgb(0, 242, 255);
+    color: #00f2ff;
 }
 
 .computerStep {
-    color: rgb(250, 98, 174);
+    color: #fa62ae;
 }
 
-.modal-wrapp {
+.modalWrapp {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0);
+    background: #ffffff00;
 }
 
-.modal-window {
+.modalWindow {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgb(20, 168, 226);
+    background: #14a8e2;
     border-radius: 25px;
 }
 
@@ -132,15 +116,15 @@ body {
 
 .play {
     padding: 0;
-    margin-top: 6px;
+    margin-top: 10px;
     border: none;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     background: none;
     cursor: pointer;
     font-size: 40px;
 }
 
-.modal-wrapp {
+.modalWrapp {
     display: block;
 }
 
@@ -150,60 +134,21 @@ body {
 
 .result {
     display: block;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     font-size: 30px;
     font-weight: bolder;
     margin-bottom: 20px;
 }
 
-.result-hidden {
+.resultHidden {
     visibility: hidden;
 }
 
-.result-show {
+.resultShow {
     visibility: visible;
 }
 
-
-/* game-end */
-
-@keyframes move_wave {
-    0% {
-        transform: translateX(0) translateZ(0) scaleY(1)
-    }
-    50% {
-        transform: translateX(-25%) translateZ(0) scaleY(1.1)
-    }
-    100% {
-        transform: translateX(-50%) translateZ(0) scaleY(1)
-    }
-}
-
-@keyframes move_wave2 {
-    0% {
-        transform: translateX(0) translateZ(0) scaleY(1)
-    }
-    50% {
-        transform: translateX(-25%) translateZ(0) scaleY(1.1)
-    }
-    100% {
-        transform: translateX(-50%) translateZ(0) scaleY(1)
-    }
-}
-
-@keyframes move_wave3 {
-    0% {
-        transform: translateX(-50%) translateZ(0) scaleY(1)
-    }
-    50% {
-        transform: translateX(-25%) translateZ(0) scaleY(1.1)
-    }
-    100% {
-        transform: translateX(0%) translateZ(0) scaleY(1)
-    }
-}
-
-.waveWrapperInner {
+.waveWrapper {
     position: absolute;
     overflow: hidden;
     top: 70%;
@@ -215,7 +160,6 @@ body {
     width: 200%;
     height: 100%;
     background-size: 10% 100px;
-    animation: move_wave 10s linear infinite;
 }
 
 .traffic2 {
@@ -223,7 +167,6 @@ body {
     height: 100%;
     background-size: 10% 100px;
     opacity: 0.4;
-    animation: move_wave2 7s linear infinite;
 }
 
 .traffic3 {
@@ -231,12 +174,129 @@ body {
     height: 100%;
     background-size: 10% 100px;
     opacity: 0.6;
+}
+
+
+/* style end */
+
+
+/* animation start */
+
+.traffic1 {
+    -webkit-animation: move_wave 10s linear infinite;
+    animation: move_wave 10s linear infinite;
+}
+
+.traffic2 {
+    -webkit-animation: move_wave2 7s linear infinite;
+    animation: move_wave2 7s linear infinite;
+}
+
+.traffic3 {
+    -webkit-animation: move_wave3 15s linear infinite;
     animation: move_wave3 15s linear infinite;
 }
 
-@keyframes blink {
+.win,
+.loose,
+.draw {
+    -webkit-animation-name: blink;
+    animation-name: blink;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes move_wave {
+    0% {
+        -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
     50% {
-        opacity: 0;
+        -webkit-transform: translateX(-25%) translateZ(0) scaleY(1.1);
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+@keyframes move_wave {
+    0% {
+        -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        -webkit-transform: translateX(-25%) translateZ(0) scaleY(1.1);
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+@-webkit-keyframes move_wave2 {
+    0% {
+        -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        -webkit-transform: translateX(-25%) translateZ(0) scaleY(1.1);
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+@keyframes move_wave2 {
+    0% {
+        -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        -webkit-transform: translateX(-25%) translateZ(0) scaleY(1.1);
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+
+@-webkit-keyframes move_wave3 {
+    0% {
+        -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+    50% {
+        -webkit-transform: translateX(-25%) translateZ(0) scaleY(1.1);
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        -webkit-transform: translateX(0%) translateZ(0) scaleY(1);
+        transform: translateX(0%) translateZ(0) scaleY(1)
+    }
+}
+
+@keyframes move_wave3 {
+    0% {
+        -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+    50% {
+        -webkit-transform: translateX(-25%) translateZ(0) scaleY(1.1);
+        transform: translateX(-25%) translateZ(0) scaleY(1.1)
+    }
+    100% {
+        -webkit-transform: translateX(0%) translateZ(0) scaleY(1);
+        transform: translateX(0%) translateZ(0) scaleY(1)
     }
 }
 
@@ -246,50 +306,45 @@ body {
     }
 }
 
-
-/* adaptive-start */
-
-@media(min-width:320px) and (max-width:767px) {
-    .container {
-        width: 320px;
+@keyframes blink {
+    50% {
+        opacity: 0;
     }
 }
 
+
+/* animation and */
+
+
+/* adaptive start */
+
 @media(min-width:768px) {
-    .container {
-        width: 600px;
-    }
     .mainSection {
-        background-image: url('../img/BG.png');
+        background-image: url('../img/BG.jpg');
     }
-    .waveWrapperInner {
+    .waveWrapper {
         top: 40%;
     }
 }
 
-@media(min-width:1170px) {
-    .container {
-        width: 1170px;
+@media(min-width: 1920px) {
+    .gameList {
+        width: 630px;
     }
-    @media(min-width:1920px) {
-        .game-list {
-            width: 630px;
-        }
-        .game-item {
-            width: 200px;
-            height: 200px;
-            font-size: 50px;
-        }
-        .play {
-            font-size: 60px;
-            margin-top: 20px;
-        }
-        .result {
-            font-size: 50px;
-            margin-bottom: 30px;
-        }
+    .gameItem {
+        width: 200px;
+        height: 200px;
+        font-size: 50px;
+    }
+    .play {
+        font-size: 60px;
+        margin-top: 20px;
+    }
+    .result {
+        font-size: 50px;
+        margin-bottom: 30px;
     }
 }
 
 
-/* adaptive-end */
+/* adaptive end */
