@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Game</title>
+    <title>404</title>
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,16 @@
 </head>
 
 <body>
-    <!-- main screen start -->
+    <!-- Start Main Section -->
     <section class="mainSection">
-        <!-- animation fly cars -->
+        <!--Start Info-->
+        <div class="infoWrapp blinkAnimation">
+            <span>oops. . .</span>
+            <h1 class="mainTitle">404</h1>
+            <span>page not found</span>
+        </div>
+        <!-- End Info E-->
+        <!-- Start Fly Cars -->
         <div class="flyCars">
             <div class="waveWrapper">
                 <div class="traffic1" style="background-image: url('./img/2.png')"></div>
@@ -28,32 +35,9 @@
                 <div class="traffic3" style="background-image: url('./img/1.png')"></div>
             </div>
         </div>
-        <div class="mainWrapp">
-            <!-- result -->
-            <span class="result"></span>
-            <div class="wrapp">
-                <!-- user interface -->
-                <ul class="gameList list">
-                    <li class="gameItem" data-ceil="1"></li>
-                    <li class="gameItem" data-ceil="2"></li>
-                    <li class="gameItem" data-ceil="3"></li>
-                    <li class="gameItem" data-ceil="4"></li>
-                    <li class="gameItem" data-ceil="5"></li>
-                    <li class="gameItem" data-ceil="6"></li>
-                    <li class="gameItem" data-ceil="7"></li>
-                    <li class="gameItem" data-ceil="8"></li>
-                    <li class="gameItem" data-ceil="9"></li>
-                </ul>
-                <div class="modalWrapp"></div>
-            </div>
-            <!-- play button -->
-            <button class="play">Play</button>
-        </div>
+        <!-- End Fly Cars -->
     </section>
-    <!-- main screen end -->
-    <!-- main music track -->
-    <audio class="music" src="./sounds/MainTrack.mp3"></audio>
-    <script src="./js/index.js"></script>
+    <!-- End Main Section -->
 </body>
 
 </html>

@@ -18,15 +18,9 @@ img {
 
 body {
     font-family: 'Bungee', cursive;
-    font-size: 24px;
-    line-height: 26px;
-    color: #ffffff;
-}
-
-.list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    font-size: 18px;
+    line-height: normal;
+    color: #39aec8;
 }
 
 
@@ -35,117 +29,32 @@ body {
 
 /* style start */
 
+.infoWrapp {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.infoWrapp span {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.mainTitle {
+    font-size: 60px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 6px;
+}
+
 .mainSection {
-    background-image: url('../img/Mobile.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-}
-
-.mainWrapp {
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    transform: translateX(-50%);
-}
-
-.gameList {
-    display: flex;
-    flex-wrap: wrap;
-    width: 330px;
-    margin: 0 auto;
-    background: #000000cf;
-    position: relative;
-}
-
-.gameItem {
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-    outline: 2px solid #1481f560;
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px;
-}
-
-.win {
-    background: #14c85c;
-}
-
-.loose {
-    background: #ec1c5e;
-}
-
-.draw {
-    background: #e3d20f;
-}
-
-.userStep {
-    color: #00f2ff;
-}
-
-.computerStep {
-    color: #fa62ae;
-}
-
-.modalWrapp {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #ffffff00;
-}
-
-.modalWindow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #14a8e2;
-    border-radius: 25px;
-}
-
-.wrapp {
-    position: relative;
-}
-
-.play {
-    padding: 0;
-    margin-top: 10px;
-    border: none;
-    color: #ffffff;
-    background: none;
-    cursor: pointer;
-    font-size: 40px;
-}
-
-.modalWrapp {
-    display: block;
-}
-
-.show {
-    display: none;
-}
-
-.result {
-    display: block;
-    color: #ffffff;
-    font-size: 30px;
-    font-weight: bolder;
-    margin-bottom: 20px;
-}
-
-.resultHidden {
-    visibility: hidden;
-}
-
-.resultShow {
-    visibility: visible;
 }
 
 .waveWrapper {
@@ -182,6 +91,17 @@ body {
 
 /* animation start */
 
+.blinkAnimation {
+    -webkit-animation-name: blink;
+    animation-name: blink;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
 .traffic1 {
     -webkit-animation: move_wave 10s linear infinite;
     animation: move_wave 10s linear infinite;
@@ -195,19 +115,6 @@ body {
 .traffic3 {
     -webkit-animation: move_wave3 15s linear infinite;
     animation: move_wave3 15s linear infinite;
-}
-
-.win,
-.loose,
-.draw {
-    -webkit-animation-name: blink;
-    animation-name: blink;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes move_wave {
@@ -318,31 +225,48 @@ body {
 
 /* adaptive start */
 
+@media(min-width:320px) and (max-width:767px) {
+    .mainSection {
+        background-image: url('../img/Mobile_375px.jpg');
+    }
+}
+
 @media(min-width:768px) {
     .mainSection {
-        background-image: url('../img/BG.jpg');
+        background-image: url('../img/Tablet_768px.jpg');
     }
     .waveWrapper {
         top: 40%;
     }
+    .infoWrapp span {
+        font-size: 22px;
+    }
+    .mainTitle {
+        font-size: 68px;
+    }
+}
+
+@media(min-width:1170px) {
+    .mainSection {
+        background-image: url('../img/Desktop_1440px.jpg');
+    }
+    .infoWrapp {
+        top: 10%;
+    }
 }
 
 @media(min-width: 1920px) {
-    .gameList {
-        width: 630px;
+    .mainSection {
+        background-image: url('../img/Desktop_2880px.jpg');
     }
-    .gameItem {
-        width: 200px;
-        height: 200px;
-        font-size: 50px;
+    .infoWrapp {
+        top: 16%;
     }
-    .play {
-        font-size: 60px;
-        margin-top: 20px;
+    .mainTitle {
+        font-size: 96px;
     }
-    .result {
-        font-size: 50px;
-        margin-bottom: 30px;
+    .infoWrapp span {
+        font-size: 28px;
     }
 }
 
