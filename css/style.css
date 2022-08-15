@@ -1,4 +1,18 @@
-/* basic start */
+/********************************************************** */
+/*********************** 404 page ************************* */
+/**********************************************************
+
+    TABLE OF CONTENT
+    ========================
+
+    01. Default CSS
+    02. Main Section
+    03. Animation
+    04. Adaptive
+
+/****************************************************** */
+/*******************  01. Default CSS ***************** */
+/****************************************************** */
 
 html {
     box-sizing: border-box;
@@ -19,46 +33,75 @@ img {
 body {
     font-family: 'Bungee', cursive;
     font-size: 18px;
-    line-height: normal;
+    line-height: 22px;
     color: #39aec8;
 }
 
 
-/* basic end */
-
-
-/* style start */
+/****************************************************** */
+/******************* 02. Main Section  **************** */
+/****************************************************** */
 
 .infoWrapp {
     position: absolute;
-    top: 20%;
+    z-index: 2;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .infoWrapp span {
     display: inline-block;
-    margin-bottom: 6px;
-    font-size: 18px;
+    font-family: 'Bungee', cursive;
+    font-size: 12px;
+    line-height: 22px;
+    color: #39aec85c;
+}
+
+.secondDescription {
+    margin-bottom: 8px;
 }
 
 .mainTitle {
-    font-size: 60px;
+    font-family: 'Bungee', cursive;
+    font-size: 24px;
+    line-height: 38px;
+    color: #39aec8;
     padding: 0;
     margin: 0;
-    margin-bottom: 6px;
 }
 
 .mainSection {
+    background-image: url('../img/Background.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
 }
 
+.button {
+    font-family: 'Bungee', cursive;
+    font-size: 16px;
+    line-height: 18px;
+    display: inline-block;
+    color: #C31AFF;
+    text-decoration: none;
+    border: 2px solid #C31AFF;
+    padding: 18px 32px;
+}
+
+.button:hover {
+    color: #0F1F30;
+    border: 2px solid #C31AFF;
+    background-color: #C31AFF;
+}
+
 .waveWrapper {
     position: absolute;
+    z-index: 1;
     overflow: hidden;
     top: 40%;
     width: 100%;
@@ -86,21 +129,9 @@ body {
 }
 
 
-/* style end */
-
-
-/* animation start */
-
-.blinkAnimation {
-    -webkit-animation-name: blink;
-    animation-name: blink;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -webkit-animation-duration: 2s;
-    animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-}
+/****************************************************** */
+/******************* 03. Animation  **************** */
+/****************************************************** */
 
 .traffic1 {
     -webkit-animation: move_wave 10s linear infinite;
@@ -207,65 +238,77 @@ body {
     }
 }
 
-@-webkit-keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
 
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
+/****************************************************** */
+/******************* 04. Adaptive  **************** */
+/****************************************************** */
 
 
-/* animation and */
-
-
-/* adaptive start */
-
-@media(min-width:320px) and (max-width:767px) {
-    .mainSection {
-        background-image: url('../img/Mobile_375px.jpg');
-    }
-}
+/* Tablet */
 
 @media(min-width:768px) {
-    .mainSection {
-        background-image: url('../img/Tablet_768px.jpg');
+    .infoWrapp span {
+        font-size: 18px;
+        line-height: 22px;
     }
+    .mainTitle {
+        font-size: 36px;
+        line-height: 46px;
+    }
+    .secondDescription {
+        margin-bottom: 16px;
+    }
+    .button {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 22px 44px;
+    }
+}
+
+
+/* Normal desktop */
+
+@media(min-width:992px) {
     .infoWrapp span {
         font-size: 22px;
+        line-height: 28px;
     }
     .mainTitle {
-        font-size: 68px;
+        font-size: 46px;
+        line-height: 60px;
+    }
+    .secondDescription {
+        margin-bottom: 18px;
+    }
+    .button {
+        font-size: 18px;
+        line-height: 22px;
     }
 }
 
-@media(min-width:1170px) {
-    .mainSection {
-        background-image: url('../img/Desktop_1440px.jpg');
-    }
-    .infoWrapp {
-        top: 10%;
-    }
-}
-
-@media(min-width: 1920px) {
-    .mainSection {
-        background-image: url('../img/Desktop_2880px.jpg');
-    }
-    .infoWrapp {
-        top: 16%;
-    }
+@media(min-width: 1440px) {
     .mainTitle {
-        font-size: 96px;
+        font-size: 60px;
+        line-height: 78px;
     }
     .infoWrapp span {
         font-size: 28px;
+        line-height: 36px;
     }
 }
 
 
-/* adaptive end */
+/* Large desktop */
+
+@media(min-width: 1920px) {
+    .infoWrapp {
+        top: 12%;
+    }
+    .mainTitle {
+        font-size: 86px;
+        line-height: 112px;
+    }
+    .secondDescription {
+        margin-bottom: 22px;
+    }
+}
