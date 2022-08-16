@@ -1,18 +1,4 @@
-/********************************************************** */
-/*********************** 404 page ************************* */
-/**********************************************************
-
-    TABLE OF CONTENT
-    ========================
-
-    01. Default CSS
-    02. Main Section
-    03. Animation
-    04. Adaptive
-
-/****************************************************** */
-/*******************  01. Default CSS ***************** */
-/****************************************************** */
+/* basic start */
 
 html {
     box-sizing: border-box;
@@ -32,78 +18,140 @@ img {
 
 body {
     font-family: 'Bungee', cursive;
-    font-size: 18px;
-    line-height: 22px;
-    color: #39aec8;
-}
-
-
-/****************************************************** */
-/******************* 02. Main Section  **************** */
-/****************************************************** */
-
-.infoWrapp {
-    position: absolute;
-    z-index: 2;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.infoWrapp span {
-    display: inline-block;
-    font-family: 'Bungee', cursive;
-    font-size: 12px;
-    line-height: 22px;
-    color: #39aec85c;
-}
-
-.secondDescription {
-    margin-bottom: 8px;
-}
-
-.mainTitle {
-    font-family: 'Bungee', cursive;
     font-size: 24px;
-    line-height: 38px;
-    color: #39aec8;
+    line-height: 26px;
+    color: #ffffff;
+}
+
+.list {
     padding: 0;
     margin: 0;
+    list-style: none;
 }
 
+
+/* basic end */
+
+
+/* style start */
+
 .mainSection {
-    background-image: url('../img/Background.jpg');
+    background-image: url('../img/Mobile.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
 }
 
-.button {
-    font-family: 'Bungee', cursive;
-    font-size: 16px;
-    line-height: 18px;
-    display: inline-block;
-    color: #C31AFF;
-    text-decoration: none;
-    border: 2px solid #C31AFF;
-    padding: 18px 32px;
+.mainWrapp {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
 }
 
-.button:hover {
-    color: #0F1F30;
-    border: 2px solid #C31AFF;
-    background-color: #C31AFF;
+.gameList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 330px;
+    margin: 0 auto;
+    background: #000000cf;
+    position: relative;
+}
+
+.gameItem {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    outline: 2px solid #1481f560;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.win {
+    background: #14c85c;
+}
+
+.loose {
+    background: #ec1c5e;
+}
+
+.draw {
+    background: #e3d20f;
+}
+
+.userStep {
+    color: #00f2ff;
+}
+
+.computerStep {
+    color: #fa62ae;
+}
+
+.modalWrapp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff00;
+}
+
+.modalWindow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #14a8e2;
+    border-radius: 25px;
+}
+
+.wrapp {
+    position: relative;
+}
+
+.play {
+    padding: 0;
+    margin-top: 10px;
+    border: none;
+    color: #ffffff;
+    background: none;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.modalWrapp {
+    display: block;
+}
+
+.show {
+    display: none;
+}
+
+.result {
+    display: block;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.resultHidden {
+    visibility: hidden;
+}
+
+.resultShow {
+    visibility: visible;
 }
 
 .waveWrapper {
     position: absolute;
-    z-index: 1;
     overflow: hidden;
-    top: 40%;
+    top: 70%;
     width: 100%;
     height: 100px;
 }
@@ -129,9 +177,10 @@ body {
 }
 
 
-/****************************************************** */
-/******************* 03. Animation  **************** */
-/****************************************************** */
+/* style end */
+
+
+/* animation start */
 
 .traffic1 {
     -webkit-animation: move_wave 10s linear infinite;
@@ -146,6 +195,19 @@ body {
 .traffic3 {
     -webkit-animation: move_wave3 15s linear infinite;
     animation: move_wave3 15s linear infinite;
+}
+
+.win,
+.loose,
+.draw {
+    -webkit-animation-name: blink;
+    animation-name: blink;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
 }
 
 @-webkit-keyframes move_wave {
@@ -238,77 +300,51 @@ body {
     }
 }
 
+@-webkit-keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 
-/****************************************************** */
-/******************* 04. Adaptive  **************** */
-/****************************************************** */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 
 
-/* Tablet */
+/* animation and */
+
+
+/* adaptive start */
 
 @media(min-width:768px) {
-    .infoWrapp span {
-        font-size: 18px;
-        line-height: 22px;
+    .mainSection {
+        background-image: url('../img/BG.jpg');
     }
-    .mainTitle {
-        font-size: 36px;
-        line-height: 46px;
-    }
-    .secondDescription {
-        margin-bottom: 16px;
-    }
-    .button {
-        font-size: 16px;
-        line-height: 18px;
-        padding: 22px 44px;
+    .waveWrapper {
+        top: 40%;
     }
 }
-
-
-/* Normal desktop */
-
-@media(min-width:992px) {
-    .infoWrapp span {
-        font-size: 22px;
-        line-height: 28px;
-    }
-    .mainTitle {
-        font-size: 46px;
-        line-height: 60px;
-    }
-    .secondDescription {
-        margin-bottom: 18px;
-    }
-    .button {
-        font-size: 18px;
-        line-height: 22px;
-    }
-}
-
-@media(min-width: 1440px) {
-    .mainTitle {
-        font-size: 60px;
-        line-height: 78px;
-    }
-    .infoWrapp span {
-        font-size: 28px;
-        line-height: 36px;
-    }
-}
-
-
-/* Large desktop */
 
 @media(min-width: 1920px) {
-    .infoWrapp {
-        top: 12%;
+    .gameList {
+        width: 630px;
     }
-    .mainTitle {
-        font-size: 86px;
-        line-height: 112px;
+    .gameItem {
+        width: 200px;
+        height: 200px;
+        font-size: 50px;
     }
-    .secondDescription {
-        margin-bottom: 22px;
+    .play {
+        font-size: 60px;
+        margin-top: 20px;
+    }
+    .result {
+        font-size: 50px;
+        margin-bottom: 30px;
     }
 }
+
+
+/* adaptive end */

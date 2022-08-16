@@ -5,48 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- page title -->
-    <title>404</title>
-    <!-- normalize - reset css -->
+    <title>Game</title>
     <link rel="stylesheet" href="./css/normalize.css">
-    <!-- stylesheet -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- google font linl -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- main section start-->
+    <!-- main screen start -->
     <section class="mainSection">
-        <div class="infoWrapp blinkAnimation">
-            <!-- description -->
-            <span class="firstDescription">you lost!</span>
-            <!-- title -->
-            <h1 class="mainTitle">error 404</h1>
-            <!-- description -->
-            <span class="secondDescription">page not found</span>
-            <!-- home link -->
-            <a class="button" href="#">Go Home</a>
-        </div>
-        <!-- animation -->
+        <!-- animation fly cars -->
         <div class="flyCars">
             <div class="waveWrapper">
-                <!-- image fly cars -->
                 <div class="traffic1" style="background-image: url('./img/2.png')"></div>
             </div>
             <div class="waveWrapper">
-                <!-- image fly cars -->
                 <div class="traffic2" style="background-image: url('./img/1.png')"></div>
             </div>
             <div class="waveWrapper">
-                <!-- image fly cars -->
                 <div class="traffic3" style="background-image: url('./img/1.png')"></div>
             </div>
         </div>
+        <div class="mainWrapp">
+            <!-- result -->
+            <span class="result"></span>
+            <div class="wrapp">
+                <!-- user interface -->
+                <ul class="gameList list">
+                    <li class="gameItem" data-ceil="1"></li>
+                    <li class="gameItem" data-ceil="2"></li>
+                    <li class="gameItem" data-ceil="3"></li>
+                    <li class="gameItem" data-ceil="4"></li>
+                    <li class="gameItem" data-ceil="5"></li>
+                    <li class="gameItem" data-ceil="6"></li>
+                    <li class="gameItem" data-ceil="7"></li>
+                    <li class="gameItem" data-ceil="8"></li>
+                    <li class="gameItem" data-ceil="9"></li>
+                </ul>
+                <div class="modalWrapp"></div>
+            </div>
+            <!-- play button -->
+            <button class="play">Play</button>
+        </div>
     </section>
-    <!-- main section end-->
+    <!-- main screen end -->
+    <!-- main music track -->
+    <audio class="music" src="./sounds/MainTrack.mp3"></audio>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
